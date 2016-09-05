@@ -12,6 +12,7 @@ import android.widget.Button;
 
 import com.translationexchange.android.TmlAndroid;
 import com.translationexchange.android.interfaces.TmlAnnotation;
+import com.translationexchange.core.Tml;
 import com.translationexchange.core.TmlMode;
 import com.translationexchange.core.Utils;
 import com.translationexchange.samples.R;
@@ -29,8 +30,11 @@ public class SplashActivity extends AppCompatActivity {
                 "key", "59b685270a0b60ac07f7c9cfd9c657377485f728df94e96973d285f13fdfd5be",
                 "token", "9a5cb2bebbbe7e1428eca4f1f30dcaa1363be40bf9b65de33897868567189d23",
                 "host", "https://sandbox-api.translationexchange.com/",
-                "cdn_host", "https://cdn.translationexchange.com/"
+                "cdn_host", "https://cdn.translationexchange.com/",
+                "auth_url", "https://sandbox-gateway.translationexchange.com/"
         ));
+
+        TmlAndroid.init(this, TmlMode.CDN, "20160825154951");
 
         button = (Button) findViewById(R.id.btn_open_next);
 
@@ -52,16 +56,9 @@ public class SplashActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onStart() {
-        super.onStart();
-//        TmlAndroid.
-        TmlAndroid.init(this, TmlMode.CDN, "20160825154951");
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        TmlAndroid.removeObject(this);
+    protected void onDestroy() {
+        super.onDestroy();
+        TmlAndroid.destroy(this);
     }
 
     @TmlAnnotation
