@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.translationexchange.android.TmlAndroid;
+import com.translationexchange.android.activities.OptionActivity;
 import com.translationexchange.android.interfaces.TmlAnnotation;
 import com.translationexchange.core.Tml;
 import com.translationexchange.core.TmlMode;
@@ -42,6 +43,14 @@ public class SplashActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent mainIntent = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(mainIntent);
+            }
+        });
+
+        findViewById(R.id.btn_open_translator).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent mainIntent = new Intent(getApplicationContext(), OptionActivity.class);
                 startActivity(mainIntent);
             }
         });

@@ -14,4 +14,13 @@
         android:layout_centerInParent="true"
         android:text="Open next Activity" />
 
+
+    <Button
+        android:id="@+id/btn_open_translator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btn_open_next"
+        android:layout_centerInParent="true"
+        android:text="Translator" />
+
 </RelativeLayout>
