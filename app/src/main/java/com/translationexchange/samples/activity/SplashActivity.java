@@ -32,7 +32,7 @@ public class SplashActivity extends AppCompatActivity {
                 "token", "9a5cb2bebbbe7e1428eca4f1f30dcaa1363be40bf9b65de33897868567189d23",
                 "host", "https://sandbox-api.translationexchange.com/",
                 "cdn_host", "https://cdn.translationexchange.com/",
-                "auth_url", "https://sandbox-gateway.translationexchange.com/"
+                "auth_url", "https://sandbox-gateway.translationexchange.com"
         ));
 
         TmlAndroid.init(this, TmlMode.CDN, "20160825154951");
