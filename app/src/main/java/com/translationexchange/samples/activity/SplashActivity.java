@@ -13,7 +13,6 @@ import android.widget.Button;
 import com.translationexchange.android.TmlAndroid;
 import com.translationexchange.android.activities.OptionActivity;
 import com.translationexchange.android.interfaces.TmlAnnotation;
-import com.translationexchange.core.Tml;
 import com.translationexchange.core.TmlMode;
 import com.translationexchange.core.Utils;
 import com.translationexchange.samples.R;
@@ -21,6 +20,7 @@ import com.translationexchange.samples.R;
 public class SplashActivity extends AppCompatActivity {
 
     private Button button;
+    private Button button1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +29,6 @@ public class SplashActivity extends AppCompatActivity {
 
         TmlAndroid.getConfig().setApplication(Utils.buildMap(
                 "key", "59b685270a0b60ac07f7c9cfd9c657377485f728df94e96973d285f13fdfd5be",
-                "token", "9a5cb2bebbbe7e1428eca4f1f30dcaa1363be40bf9b65de33897868567189d23",
                 "host", "https://sandbox-api.translationexchange.com/",
                 "cdn_host", "https://cdn.translationexchange.com/",
                 "auth_url", "https://sandbox-gateway.translationexchange.com"
@@ -38,6 +37,7 @@ public class SplashActivity extends AppCompatActivity {
         TmlAndroid.init(this, TmlMode.CDN, "20160825154951");
 
         button = (Button) findViewById(R.id.btn_open_next);
+        button1 = (Button) findViewById(R.id.btn_open_translator);
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -47,7 +47,7 @@ public class SplashActivity extends AppCompatActivity {
             }
         });
 
-        findViewById(R.id.btn_open_translator).setOnClickListener(new View.OnClickListener() {
+        button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent mainIntent = new Intent(getApplicationContext(), OptionActivity.class);
@@ -73,6 +73,7 @@ public class SplashActivity extends AppCompatActivity {
     @TmlAnnotation
     public void updateUi() {
         button.setText(TmlAndroid.translate("Open Next Activity"));
+        button1.setText(TmlAndroid.translate("Translator"));
     }
 
     @Override
