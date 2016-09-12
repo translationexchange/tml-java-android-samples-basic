@@ -11,7 +11,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.translationexchange.android.TmlAndroid;
-import com.translationexchange.android.activities.OptionActivity;
+import com.translationexchange.android.activities.TmlAndroidActivity;
 import com.translationexchange.android.interfaces.TmlAnnotation;
 import com.translationexchange.core.TmlMode;
 import com.translationexchange.core.Utils;
@@ -50,7 +50,7 @@ public class SplashActivity extends AppCompatActivity {
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent mainIntent = new Intent(getApplicationContext(), OptionActivity.class);
+                Intent mainIntent = new Intent(getApplicationContext(), TmlAndroidActivity.class);
                 startActivity(mainIntent);
             }
         });
