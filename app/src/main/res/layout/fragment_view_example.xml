@@ -1,0 +1,33 @@
+<android.support.v7.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.translationexchange.samples.fragment.ViewExampleFragment">
+
+    <TextView
+        android:id="@+id/text_example"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#1D3548"
+        android:gravity="center"
+        android:padding="@dimen/text_margin"
+        android:text="Translation"
+        android:textColor="@android:color/white" />
+
+    <TextView
+        android:id="@+id/text_result"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="#142735"
+        android:gravity="center"
+        android:textColor="@android:color/white" />
+
+</android.support.v7.widget.LinearLayoutCompat>

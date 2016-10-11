@@ -11,9 +11,7 @@
         android:id="@+id/btn_open_next"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:text="Open next Activity" />
-
+        android:layout_centerInParent="true" />
 
     <Button
         android:id="@+id/btn_open_translator"
@@ -22,5 +20,19 @@
         android:layout_below="@id/btn_open_next"
         android:layout_centerInParent="true"
         android:text="Translator" />
+
+    <TextView
+        android:id="@+id/text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btn_open_translator"
+        android:layout_centerInParent="true" />
+
+    <TextView
+        android:id="@+id/text2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/text"
+        android:layout_centerInParent="true" />
 
 </RelativeLayout>

@@ -1,26 +1,52 @@
 package com.translationexchange.samples.activity;
 
+import android.content.Context;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.widget.TextView;
+import android.support.v4.app.FragmentManager;
+import android.view.Menu;
+import android.view.MenuItem;
 
-import com.translationexchange.android.TmlAndroid;
+import com.translationexchange.android.activities.BaseActivity;
+import com.translationexchange.android.text.TmlContextWrapper;
 import com.translationexchange.samples.R;
+import com.translationexchange.samples.fragment.MainFragment;
 
-public class MainActivity extends AppCompatActivity {
+public abstract class MainActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        enableBackButton(true);
+        if (savedInstanceState == null) {
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            fragmentManager.beginTransaction().add(android.R.id.content, new MainFragment(), "tag").commit();
+        }
+    }
 
-        TextView textView = (TextView) findViewById(R.id.text);
-        textView.setText(TmlAndroid.translate("Hello world"));
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+    }
 
-        TextView textView1 = (TextView) findViewById(R.id.text1);
-        textView1.setText(TmlAndroid.translate("hello, how are you?"));
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main2, menu);
+        return true;
+    }
 
-        TextView textView2 = (TextView) findViewById(R.id.text2);
-        textView2.setText(TmlAndroid.translate("Hello Mr!"));
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        if (id == R.id.action_settings) {
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void attachBaseContext(Context newBase) {
+        super.attachBaseContext(TmlContextWrapper.wrap(newBase));
     }
 }
