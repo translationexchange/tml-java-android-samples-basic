@@ -14,7 +14,7 @@ import com.translationexchange.samples.ExampleContent;
 import com.translationexchange.samples.R;
 import com.translationexchange.samples.fragment.ViewExampleFragment;
 
-public abstract class ViewExampleActivity extends BaseActivity {
+public class ViewExampleActivity extends BaseActivity {
 
     public static void openExample(Context context, int position) {
         Intent intent = new Intent(context, ViewExampleActivity.class);

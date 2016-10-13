@@ -1,17 +1,19 @@
 package com.translationexchange.samples.activity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.view.Menu;
 import android.view.MenuItem;
 
 import com.translationexchange.android.activities.BaseActivity;
+import com.translationexchange.android.activities.TmlAndroidActivity;
 import com.translationexchange.android.text.TmlContextWrapper;
 import com.translationexchange.samples.R;
 import com.translationexchange.samples.fragment.MainFragment;
 
-public abstract class MainActivity extends BaseActivity {
+public class MainActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,11 +23,6 @@ public abstract class MainActivity extends BaseActivity {
             FragmentManager fragmentManager = getSupportFragmentManager();
             fragmentManager.beginTransaction().add(android.R.id.content, new MainFragment(), "tag").commit();
         }
-    }
-
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
     }
 
     @Override
@@ -39,6 +36,7 @@ public abstract class MainActivity extends BaseActivity {
         int id = item.getItemId();
 
         if (id == R.id.action_settings) {
+            startActivity(new Intent(this, TmlAndroidActivity.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
             return true;
         }
 

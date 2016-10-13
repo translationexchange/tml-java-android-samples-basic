@@ -15,8 +15,8 @@ import java.util.List;
 
 public class MyItemRecyclerViewAdapter extends RecyclerView.Adapter<MyItemRecyclerViewAdapter.ViewHolder> {
 
-    private final List<ExampleItem> mValues;
-    private final MainFragment.OnListFragmentInteractionListener mListener;
+    private List<ExampleItem> mValues;
+    private MainFragment.OnListFragmentInteractionListener mListener;
 
     public MyItemRecyclerViewAdapter(List<ExampleItem> items, MainFragment.OnListFragmentInteractionListener listener) {
         mValues = items;
@@ -26,26 +26,12 @@ public class MyItemRecyclerViewAdapter extends RecyclerView.Adapter<MyItemRecycl
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.fragment_item, parent, false);
-        return new ViewHolder(view);
+        return new ViewHolder(view, mListener);
     }
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
-        holder.mItem = mValues.get(position);
-        if (holder.mItem.isSpannable) {
-            holder.mIdView.setText(TmlAndroid.translateSpannableString(holder.mItem.label, holder.mItem.tokens));
-        } else {
-            holder.mIdView.setText(TmlAndroid.translate(holder.mItem.label, holder.mItem.tokens));
-        }
-
-        holder.mView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (null != mListener) {
-                    mListener.onListFragmentInteraction(holder.mItem, holder.getAdapterPosition());
-                }
-            }
-        });
+        holder.initUi(mValues.get(position));
     }
 
     @Override
@@ -53,15 +39,32 @@ public class MyItemRecyclerViewAdapter extends RecyclerView.Adapter<MyItemRecycl
         return mValues.size();
     }
 
-    class ViewHolder extends RecyclerView.ViewHolder {
-        final View mView;
-        final TextView mIdView;
+    static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+        TextView mIdView;
         ExampleItem mItem;
+        MainFragment.OnListFragmentInteractionListener mListener;
 
-        ViewHolder(View view) {
+        ViewHolder(View view, MainFragment.OnListFragmentInteractionListener mListener) {
             super(view);
-            mView = view;
-            mIdView = (TextView) view.findViewById(R.id.id);
+            itemView.setOnClickListener(this);
+            this.mIdView = (TextView) view.findViewById(R.id.id);
+            this.mListener = mListener;
+        }
+
+        void initUi(final ExampleItem mItem) {
+            this.mItem = mItem;
+            if (mItem.isSpannable) {
+                TmlAndroid.translateSpannableString(mIdView, mItem.label, mItem.tokens);
+            } else {
+                TmlAndroid.translate(mIdView, mItem.label, mItem.tokens);
+            }
+        }
+
+        @Override
+        public void onClick(View v) {
+            if (mListener != null) {
+                mListener.onListFragmentInteraction(mItem, getAdapterPosition());
+            }
         }
     }
 }
