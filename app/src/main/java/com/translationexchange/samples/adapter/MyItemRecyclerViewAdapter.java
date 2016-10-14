@@ -46,8 +46,8 @@ public class MyItemRecyclerViewAdapter extends RecyclerView.Adapter<MyItemRecycl
 
         ViewHolder(View view, MainFragment.OnListFragmentInteractionListener mListener) {
             super(view);
-            itemView.setOnClickListener(this);
             this.mIdView = (TextView) view.findViewById(R.id.id);
+            view.setOnClickListener(this);
             this.mListener = mListener;
         }
 
