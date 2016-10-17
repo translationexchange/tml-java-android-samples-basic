@@ -7,6 +7,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.translationexchange.android.TmlAndroid;
+import com.translationexchange.android.TmlSession;
 import com.translationexchange.android.activities.BaseActivity;
 import com.translationexchange.android.activities.TmlAndroidActivity;
 import com.translationexchange.android.interfaces.TmlAnnotation;
@@ -14,9 +15,13 @@ import com.translationexchange.android.utils.ViewUtils;
 import com.translationexchange.core.Utils;
 import com.translationexchange.samples.R;
 
-public class WelcomeActivity extends BaseActivity {
+import java.util.Observable;
+import java.util.Observer;
+
+public class WelcomeActivity extends BaseActivity implements Observer {
 
     private Button button;
+    private Button button1;
     private TextView textView;
     private TextView textView2;
 
@@ -26,7 +31,7 @@ public class WelcomeActivity extends BaseActivity {
         setContentView(R.layout.activity_splash);
 
         button = (Button) findViewById(R.id.btn_open_next);
-        Button button1 = (Button) findViewById(R.id.btn_open_translator);
+        button1 = (Button) findViewById(R.id.btn_open_translator);
         textView = (TextView) findViewById(R.id.text);
         textView2 = (TextView) findViewById(R.id.text2);
 
@@ -45,7 +50,7 @@ public class WelcomeActivity extends BaseActivity {
                 startActivity(mainIntent);
             }
         });
-
+        TmlAndroid.addObserver(this);
         initUi();
     }
 
@@ -53,6 +58,7 @@ public class WelcomeActivity extends BaseActivity {
     @Override
     public void initUi() {
         TmlAndroid.translate(button, getText(R.string.open_next_activity).toString());
+        TmlAndroid.translate(button1, "Translator");
 
         textView.setText(TmlAndroid.translateSpannableString(
                 "[style: Adjust fonts] using an attribute dictionary.",
@@ -75,8 +81,9 @@ public class WelcomeActivity extends BaseActivity {
     }
 
     @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        TmlAndroid.destroy(getApplicationContext());
+    public void update(Observable o, Object arg) {
+        if (o instanceof TmlSession) {
+
+        }
     }
 }

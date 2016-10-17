@@ -1,13 +1,10 @@
 <resources>
-    <string name="app_name">Welcome</string>
-    <string name="title_activity_main2">Demo Sample</string>
+    <string name="app_name">Demo Sample</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
-    <string name="action_settings">Settings</string>
+    <string name="action_settings">TML</string>
     <string name="open_next_activity">Open Next Activity</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

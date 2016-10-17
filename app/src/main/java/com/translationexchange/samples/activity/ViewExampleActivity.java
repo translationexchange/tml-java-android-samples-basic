@@ -32,12 +32,12 @@ public class ViewExampleActivity extends BaseActivity {
         Bundle bundle = getIntent().getExtras();
         int position = bundle == null ? 0 : bundle.getInt(ViewExampleFragment.ARG_POSITION, 0);
         pageIndicator = (TextView) findViewById(R.id.text_indicator);
-        pageIndicator.setText((position + 1) + "/" + ExampleContent.ITEMS.size());
+        pageIndicator.setText((position + 1) + "/" + ExampleContent.getExampleItems().size());
         ViewPager viewPager = (ViewPager) findViewById(R.id.pager);
         viewPager.addOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
             @Override
             public void onPageSelected(int position) {
-                pageIndicator.setText((position + 1) + "/" + ExampleContent.ITEMS.size());
+                pageIndicator.setText((position + 1) + "/" + ExampleContent.getExampleItems().size());
             }
         });
         ScreenSlidePagerAdapter pagerAdapter = new ScreenSlidePagerAdapter(getSupportFragmentManager());
@@ -57,7 +57,7 @@ public class ViewExampleActivity extends BaseActivity {
 
         @Override
         public int getCount() {
-            return ExampleContent.ITEMS.size();
+            return ExampleContent.getExampleItems().size();
         }
     }
 }

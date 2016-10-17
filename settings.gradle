@@ -1,4 +1,3 @@
 include ':app', ":tml-java", ':tml-java-android'
 project(':tml-java').projectDir = new File('../TmlJava');
 project(':tml-java-android').projectDir = new File('../TmlJavaAndroid');
-

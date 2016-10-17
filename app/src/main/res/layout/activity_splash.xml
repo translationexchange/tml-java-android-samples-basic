@@ -18,8 +18,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/btn_open_next"
-        android:layout_centerInParent="true"
-        android:text="Translator" />
+        android:layout_centerInParent="true" />
 
     <TextView
         android:id="@+id/text"

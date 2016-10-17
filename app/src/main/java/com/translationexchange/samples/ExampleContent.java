@@ -10,9 +10,8 @@ import java.util.Map;
 
 public class ExampleContent {
 
-    public static final List<ExampleItem> ITEMS = new ArrayList<>();
-
-    static {
+    public static List<ExampleItem> getExampleItems() {
+        List<ExampleItem> ITEMS = new ArrayList<>();
         ITEMS.add(new ExampleItem("Hello World"));
         ITEMS.add(new ExampleItem("Hello [italic: World]", Utils.buildMap(
                 "italic", Utils.buildMap("style", "italic")), true));
@@ -114,6 +113,7 @@ public class ExampleContent {
                         "size", ViewUtils.convertPixelsToSp(SampleApplication.getInstance(), 30))), true));
         ITEMS.add(new ExampleItem("You can [strike: use a strike-through] as well.", Utils.buildMap(
                 "strike", Utils.buildMap("strike-through", "1")), true));
+        return ITEMS;
     }
 
     public static class ExampleItem {
