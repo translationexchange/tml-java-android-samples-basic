@@ -37,4 +37,5 @@ public class SampleApplication extends Application {
 
         TmlAndroid.init(this, "20161007111605");
     }
+
 }

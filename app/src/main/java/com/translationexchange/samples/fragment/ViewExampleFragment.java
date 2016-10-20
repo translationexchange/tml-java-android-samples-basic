@@ -72,14 +72,14 @@ public class ViewExampleFragment extends Fragment implements Observer {
         ExampleContent.ExampleItem exampleItem = ExampleContent.getExampleItems().get(position);
         if (exampleItem.isSpannable) {
             exampleView.setText("TmlAndroid.translateSpannableString(" + "\"" + exampleItem.label + "\"" + ", " + exampleItem.tokens + ")");
-            resultView.setText(TmlAndroid.translateSpannableString(exampleItem.label, exampleItem.tokens));
+            TmlAndroid.translateSpannableString(resultView, exampleItem.label, exampleItem.tokens);
         } else {
             if (exampleItem.tokens == null) {
                 exampleView.setText("TmlAndroid.translate(" + "\"" + exampleItem.label + "\")");
             } else {
                 exampleView.setText("TmlAndroid.translate(" + "\"" + exampleItem.label + "\"" + ", " + exampleItem.tokens + ")");
             }
-            resultView.setText(TmlAndroid.translate(exampleItem.label, exampleItem.tokens));
+            TmlAndroid.translate(resultView, exampleItem.label, exampleItem.tokens);
         }
     }
 
