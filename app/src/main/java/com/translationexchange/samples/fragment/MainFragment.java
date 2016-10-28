@@ -10,7 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.translationexchange.android.TmlAndroid;
+import com.translationexchange.android.Tml;
 import com.translationexchange.android.TmlSession;
 import com.translationexchange.samples.ExampleContent;
 import com.translationexchange.samples.ExampleContent.ExampleItem;
@@ -36,13 +36,13 @@ public class MainFragment extends Fragment implements Observer {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        TmlAndroid.addObserver(this);
+        Tml.addObserver(this);
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
-        TmlAndroid.deleteObserver(this);
+        Tml.deleteObserver(this);
     }
 
     @Override

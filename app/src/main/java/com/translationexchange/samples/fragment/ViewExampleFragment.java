@@ -9,7 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.translationexchange.android.TmlAndroid;
+import com.translationexchange.android.Tml;
 import com.translationexchange.android.TmlSession;
 import com.translationexchange.android.activities.LanguageSelectorActivity;
 import com.translationexchange.samples.ExampleContent;
@@ -39,13 +39,13 @@ public class ViewExampleFragment extends Fragment implements Observer {
         if (getArguments() != null) {
             position = getArguments().getInt(ARG_POSITION);
         }
-        TmlAndroid.addObserver(this);
+        Tml.addObserver(this);
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
-        TmlAndroid.deleteObserver(this);
+        Tml.deleteObserver(this);
     }
 
     @Override
@@ -71,15 +71,15 @@ public class ViewExampleFragment extends Fragment implements Observer {
     private void initView() {
         ExampleContent.ExampleItem exampleItem = ExampleContent.getExampleItems().get(position);
         if (exampleItem.isSpannable) {
-            exampleView.setText("TmlAndroid.translateSpannableString(" + "\"" + exampleItem.label + "\"" + ", " + exampleItem.tokens + ")");
-            TmlAndroid.translateSpannableString(resultView, exampleItem.label, exampleItem.tokens);
+            exampleView.setText("Tml.trs(" + "\"" + exampleItem.label + "\"" + ", " + exampleItem.tokens + ")");
+            Tml.trs(resultView, exampleItem.label, exampleItem.tokens);
         } else {
             if (exampleItem.tokens == null) {
-                exampleView.setText("TmlAndroid.translate(" + "\"" + exampleItem.label + "\")");
+                exampleView.setText("Tml.tr(" + "\"" + exampleItem.label + "\")");
             } else {
-                exampleView.setText("TmlAndroid.translate(" + "\"" + exampleItem.label + "\"" + ", " + exampleItem.tokens + ")");
+                exampleView.setText("Tml.tr(" + "\"" + exampleItem.label + "\"" + ", " + exampleItem.tokens + ")");
             }
-            TmlAndroid.translate(resultView, exampleItem.label, exampleItem.tokens);
+            Tml.tr(resultView, exampleItem.label, exampleItem.tokens);
         }
     }
 

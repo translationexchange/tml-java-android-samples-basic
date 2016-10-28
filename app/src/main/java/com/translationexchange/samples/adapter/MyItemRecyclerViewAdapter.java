@@ -6,7 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.translationexchange.android.TmlAndroid;
+import com.translationexchange.android.Tml;
 import com.translationexchange.samples.ExampleContent.ExampleItem;
 import com.translationexchange.samples.R;
 import com.translationexchange.samples.fragment.MainFragment;
@@ -54,9 +54,9 @@ public class MyItemRecyclerViewAdapter extends RecyclerView.Adapter<MyItemRecycl
         void initUi(final ExampleItem mItem) {
             this.mItem = mItem;
             if (mItem.isSpannable) {
-                TmlAndroid.translateSpannableString(mIdView, mItem.label, mItem.tokens);
+                Tml.trs(mIdView, mItem.label, mItem.tokens);
             } else {
-                TmlAndroid.translate(mIdView, mItem.label, mItem.tokens);
+                Tml.tr(mIdView, mItem.label, mItem.tokens);
             }
         }
 

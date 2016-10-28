@@ -6,7 +6,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.translationexchange.android.TmlAndroid;
+import com.translationexchange.android.Tml;
 import com.translationexchange.android.TmlSession;
 import com.translationexchange.android.activities.BaseActivity;
 import com.translationexchange.android.activities.TmlAndroidActivity;
@@ -50,32 +50,32 @@ public class WelcomeActivity extends BaseActivity implements Observer {
                 startActivity(mainIntent);
             }
         });
-        TmlAndroid.addObserver(this);
+        Tml.addObserver(this);
         initUi();
     }
 
     @TmlAnnotation
     @Override
     public void initUi() {
-        TmlAndroid.translate(button, getText(R.string.open_next_activity).toString());
-        TmlAndroid.translate(button1, "Translator");
+        Tml.tr(button, getText(R.string.open_next_activity).toString());
+        Tml.tr(button1, "Translator");
 
-        textView.setText(TmlAndroid.translateSpannableString(
+        textView.setText(Tml.trs(
                 "[style: Adjust fonts] using an attribute dictionary.",
-                Utils.buildMap(
-                        "style", Utils.buildMap(
+                Utils.map(
+                        "style", Utils.map(
                                 "style", "bold")
                 )
         ));
 
-        textView2.setText(TmlAndroid.translateSpannableString(
+        textView2.setText(Tml.trs(
                 "[style: Adjust fonts] using an [typeface: attribute] dictionary.\nHello {user}. You have {count || message}.",
-                Utils.buildMap("style",
-                        Utils.buildMap(
+                Utils.map("style",
+                        Utils.map(
                                 "style", "italic",
                                 "color", "red",
                                 "size", ViewUtils.convertPixelsToSp(getApplicationContext(), 20)),
-                        "typeface", Utils.buildMap("typeface", "sans-serif-thin"),
+                        "typeface", Utils.map("typeface", "sans-serif-thin"),
                         "user", "Alexander", "count", "5")
         ));
     }
