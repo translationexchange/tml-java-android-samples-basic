@@ -57,7 +57,8 @@ public class WelcomeActivity extends BaseActivity implements Observer {
     @TmlAnnotation
     @Override
     public void initUi() {
-        Tml.tr(button, getText(R.string.open_next_activity).toString());
+        Tml.tr(button, getString(R.string.open_next_activity));
+        Tml.tr(button, R.string.open_next_activity);
         Tml.tr(button1, "Translator");
 
         textView.setText(Tml.trs(

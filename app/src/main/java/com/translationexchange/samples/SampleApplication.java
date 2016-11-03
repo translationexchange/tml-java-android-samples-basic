@@ -38,4 +38,8 @@ public class SampleApplication extends Application {
         Tml.init(this, "20161007111605");
     }
 
+//    @Override
+//    protected void attachBaseContext(Context base) {
+//        super.attachBaseContext(TmlContextWrapper.wrap(base));
+//    }
 }

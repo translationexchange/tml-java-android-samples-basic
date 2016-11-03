@@ -6,5 +6,8 @@
 
     <string name="action_settings">TML</string>
     <string name="open_next_activity">Open Next Activity</string>
+    <string name="translation">Translation</string>
+
+    <string name="text">Text</string>
 
 </resources>

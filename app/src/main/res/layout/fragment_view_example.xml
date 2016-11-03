@@ -19,7 +19,7 @@
         android:background="#1D3548"
         android:gravity="center"
         android:padding="@dimen/text_margin"
-        android:text="Translation"
+        android:text="@string/translation"
         android:textColor="@android:color/white" />
 
     <TextView
