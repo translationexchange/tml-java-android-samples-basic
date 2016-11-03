@@ -60,7 +60,7 @@ public class ViewExampleFragment extends Fragment implements Observer {
         resultView = (TextView) view.findViewById(R.id.text_result);
         TextView languageSelector = (TextView) view.findViewById(R.id.btn_open_selector);
         if (Tml.getSession() != null) {
-            languageSelector.setText("Translation in " + Tml.getSession().getApplication().getLanguage().getEnglishName());
+            languageSelector.setText("Translation in " + Tml.getSession().getCurrentLanguage().getEnglishName());
         }
         languageSelector.setOnClickListener(new View.OnClickListener() {
             @Override
